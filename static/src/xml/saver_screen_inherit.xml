@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.SaverScreen" t-inherit-mode="extension">
+        <xpath expr="//img[@src='/web/static/img/odoo_logo.svg']" position="replace">
+            <t t-if="pos.config.storrd_saver_screen_img">
+                <img t-att-height="env.isSmall ? 40 : 120"
+                     t-att-src="pos.config.storrd_saver_screen_img_name?.endsWith('.svg')
+                                ? 'data:image/svg+xml;base64,' + pos.config.storrd_saver_screen_img
+                                : '/web/image/pos.config/' + pos.config.id + '/storrd_saver_screen_img?unique=' + pos.config.write_date"
+                     alt="Branded Logo"/>
+            </t>
+            <t t-else="">
+                <img t-att-height="env.isSmall ? 40 : 120"
+                     src="/web/static/img/odoo_logo.svg"
+                     alt="Logo"/>
+            </t>
+        </xpath>
+    </t>
+</templates>
